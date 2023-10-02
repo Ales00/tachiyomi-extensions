@@ -1,1 +1,33 @@
-open"http://ar-ozulscans.com/"
+
+package eu.kanade.tachiyomi.multisrc.mangareader
+import generator.ThemeSourceData.MultiLang
+import generator.ThemeSourceGenerator
+class ozulscansGenerator : ThemeSourceGenerator {
+    override val themeClass = "ozulscans"
+    override val themePkg = "ozulscans"
+    override val baseVersionCode = 1
+    override val sources = listOf(
+        MultiLang(
+            name = "ozulscans",
+            baseUrl = "https://ar-ozulscans.com",
+            langs = listOf("en", "fr", "ja", "ko", "zh"),
+            isNsfw = true,
+            pkgName = "ozulscans",
+            overrideVersionCode = 3,
+        ),
+        MultiLang(
+            name = "ozulscans",
+            baseUrl = "https://ar-ozulscans.com",
+            langs = listOf("en", "es", "es-419", "fr", "ja", "pt", "pt-BR"),
+            isNsfw = true,
+            overrideVersionCode = 1,
+            overrideVersionCode = 2,
+        ),
+    )
+
+    companion object {
+        @JvmStatic
+        fun main(args: Array<String>) {
+            MangaReaderGenerator().createAll()
+        }
+    }
